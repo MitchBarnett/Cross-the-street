@@ -28,9 +28,8 @@ int main()
 	TrafficLane lane5(-100, 250);*/
 	TrafficManager trafficManager;
 	Background background;
-	std::string livesLabel = "Lives: ";
 	int livesLeft = 3;
-	TextItem lives(livesLabel, livesLeft);
+	TextItem lives("Lives: ", livesLeft);
 
 	player.movePosition(350, 0);
 	sf::Clock movementCooldown;
@@ -54,7 +53,7 @@ int main()
 		//Chek if the user has requested the player to move
 		player.checkMovement(event, movementCooldown, window);
 		trafficManager.update(elapsed);
-		lives.update(livesLabel, livesLeft);
+		lives.update("Lives: ", livesLeft);
 		/*lane1.update();
 		lane2.update();
 		lane3.update();
