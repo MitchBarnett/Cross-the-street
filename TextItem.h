@@ -15,8 +15,10 @@ public:
 	std::ostringstream textStream;
 	sf::Font font;
 	TextItem(std::string textString, int value, sf::Vector2f position); //Constructor
+	TextItem(std::string textString, float value, sf::Vector2f position); //Constructor
 	void setSpeed(float speed);
 	void update(std::string textString, int value);
+	void update(std::string textString, float value);
 	void draw(sf::RenderWindow& window);
 };
 
