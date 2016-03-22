@@ -1,0 +1,23 @@
+﻿Build started 21/03/2016 21:54:21.
+     1>Project "s:\Users\frogman\Documents\Visual Studio 2013\Projects\Cross the street\Cross the street\Cross the street.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         M:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt TrafficLane.cpp
+         TrafficLane.cpp
+     1>s:\users\frogman\documents\visual studio 2013\projects\cross the street\cross the street\trafficlane.cpp(54): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+       Link:
+         M:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"s:\Users\frogman\Documents\Visual Studio 2013\Projects\Cross the street\Debug\Cross the street.exe" /INCREMENTAL /NOLOGO "sfml-main-d.lib" "sfml-system-d.lib" "sfml-graphics-d.lib" "sfml-window-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"s:\Users\frogman\Documents\Visual Studio 2013\Projects\Cross the street\Debug\Cross the street.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"s:\Users\frogman\Documents\Visual Studio 2013\Projects\Cross the street\Debug\Cross the street.lib" /MACHINE:X86 Debug\Background.obj
+         Debug\Bus.obj
+         Debug\Car.obj
+         Debug\CarSpawner.obj
+         Debug\Frog.obj
+         Debug\Source.obj
+         Debug\TextItem.obj
+         Debug\TrafficLane.obj
+         Debug\TrafficManager.obj
+         Debug\Vehicle.obj
+         Cross the street.vcxproj -> s:\Users\frogman\Documents\Visual Studio 2013\Projects\Cross the street\Debug\Cross the street.exe
+     1>Done Building Project "s:\Users\frogman\Documents\Visual Studio 2013\Projects\Cross the street\Cross the street\Cross the street.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.80
