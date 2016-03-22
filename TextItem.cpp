@@ -2,7 +2,7 @@
 #include <sstream>
 #include <iostream>
 
-TextItem::TextItem(std::string textString, int value)
+TextItem::TextItem(std::string textString, int value, sf::Vector2f postion)
 {
 	
 	if (!font.loadFromFile("arial.ttf"))
@@ -23,6 +23,8 @@ TextItem::TextItem(std::string textString, int value)
 
 	// set the color
 	text.setColor(sf::Color::Black);
+
+	text.setPosition(postion);
 }
 
 void TextItem::update(std::string textString, int value)

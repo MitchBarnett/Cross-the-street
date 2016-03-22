@@ -29,7 +29,7 @@ int main()
 	TrafficManager trafficManager;
 	Background background;
 	int livesLeft = 3;
-	TextItem lives("Lives: ", livesLeft);
+	TextItem lives("Lives: ", livesLeft, sf::Vector2f(0,0)); // Creates lives UI item
 
 	player.movePosition(350, 0);
 	sf::Clock movementCooldown;
