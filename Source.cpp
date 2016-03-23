@@ -29,13 +29,11 @@ int main()
 	TrafficManager trafficManager;
 	Background background;
 	int livesLeft = 3;
-	int movesTaken = 0;
 	TextItem lives("Lives: ", livesLeft, sf::Vector2f(0,650)); // Creates lives UI item
-	TextItem moves("Moves: ", movesTaken, sf::Vector2f(700, 650)); // Creates lives UI item
+	TextItem moves("Moves: ", player.iMoves, sf::Vector2f(700, 650)); // Creates lives UI item
 	TextItem time("Time: ", 0.0f, sf::Vector2f(300, 650));
 
 	player.movePosition(350, 0);
-	sf::Clock movementCooldown;
 	sf::Clock gameClock;
 	sf::Clock frameClock;
 	float elapsed = 0.01;
@@ -54,10 +52,10 @@ int main()
 		}
 		frameClock.restart();
 		//Check if the user has requested the player to move
-		player.checkMovement(event, movementCooldown, window);
+		player.update(event, window);
 		trafficManager.update(elapsed);
 		lives.update("Lives: ", livesLeft);
-		moves.update("Moves: ", movesTaken);
+		moves.update("Moves: ", player.iMoves);
 		time.update("Time: ", gameClock.getElapsedTime().asSeconds());
 		/*lane1.update();
 		lane2.update();
