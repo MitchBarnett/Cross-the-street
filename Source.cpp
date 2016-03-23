@@ -21,11 +21,7 @@ int main()
 	srand(time(NULL));
 	CarSpawner carManager;
 	Frog player;
-	/*TrafficLane lane1(-100, 50);
-	TrafficLane lane2(-100, 100);
-	TrafficLane lane3(-100, 150);
-	TrafficLane lane4(-100, 200);
-	TrafficLane lane5(-100, 250);*/
+
 	TrafficManager trafficManager;
 	Background background;
 	int livesLeft = 3;
@@ -54,13 +50,6 @@ int main()
 		player.checkMovement(event, movementCooldown, window);
 		trafficManager.update(elapsed);
 		lives.update("Lives: ", livesLeft);
-		/*lane1.update();
-		lane2.update();
-		lane3.update();
-		lane4.update();
-		lane5.update();*/
-
-
 		
 
 		// clear the window with black color
@@ -81,12 +70,6 @@ int main()
 		{
 			window.clear(sf::Color::Black);
 		}
-		/*lane1.draw(window);
-		lane2.draw(window);
-		lane3.draw(window);
-		lane4.draw(window);
-		lane5.draw(window);*/
-
 
 		// end the current frame
 		window.display();
