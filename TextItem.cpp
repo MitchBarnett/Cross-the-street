@@ -3,7 +3,28 @@
 #include <iostream>
 #include <iomanip>
 
-TextItem::TextItem(std::string textString, int value, sf::Vector2f postion)
+TextItem::TextItem(std::string textString, sf::Vector2f position, int size)
+{
+	if (!font.loadFromFile("arial.ttf"))
+	{
+		std::cout << "fail" << std::endl;
+	}
+
+	text.setFont(font); // font is a sf::Font
+
+	// set the string to display
+
+	text.setString(textString);
+
+	// set the character size
+	text.setCharacterSize(size); // in pixels, not points!
+
+	// set the color
+	text.setColor(sf::Color::White);
+
+	text.setPosition(position);
+}
+TextItem::TextItem(std::string textString, int value, sf::Vector2f position)
 {
 	
 	if (!font.loadFromFile("arial.ttf"))
@@ -25,7 +46,7 @@ TextItem::TextItem(std::string textString, int value, sf::Vector2f postion)
 	// set the color
 	text.setColor(sf::Color::White);
 
-	text.setPosition(postion);
+	text.setPosition(position);
 }
 
 TextItem::TextItem(std::string textString, float value, sf::Vector2f postion)
