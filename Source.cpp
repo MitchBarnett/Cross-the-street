@@ -10,6 +10,12 @@
 #include <sstream>
 #include <iostream>
 
+int calcScore(float time, int moves, int lives)
+{
+	int timeScore = static_cast<int>(time);
+	return (timeScore + moves - lives * 5) + 1;
+
+}
 
 
 int main()
@@ -32,12 +38,13 @@ int main()
 	TextItem lives("Lives: ", player.iLivesLeft, sf::Vector2f(0,650)); // Creates lives UI item
 	TextItem moves("Moves: ", player.iMoves, sf::Vector2f(700, 650)); // Creates lives UI item
 	TextItem time("Time: ", 0.0f, sf::Vector2f(300, 650));
-
+	
 	player.movePosition(350, 0);
 	sf::Clock gameClock;
 	sf::Clock frameClock;
 	float elapsed = 0.01;
-
+	int score = calcScore(gameClock.getElapsedTime().asSeconds(), player.iMoves, player.iLivesLeft);
+	TextItem gameScore("Score:  ", score, sf::Vector2f(350, 320));
 
 	// run the program as long as the window is open
 	while (window.isOpen())
@@ -55,14 +62,13 @@ int main()
 		player.update(event, window);
 		trafficManager.update(elapsed);
 		lives.update("Lives: ", player.iLivesLeft);
-		moves.update("Moves: ", player.iMoves);
 		time.update("Time: ", gameClock.getElapsedTime().asSeconds());
+		moves.update("Moves: ", player.iMoves);
 		/*lane1.update();
 		lane2.update();
 		lane3.update();
 		lane4.update();
 		lane5.update();*/
-
 
 		
 
@@ -79,12 +85,25 @@ int main()
 			player.movePosition(350, 0);
 		}
 		lives.draw(window);
-		moves.draw(window);
 		time.draw(window);
-		if (livesLeft == 0)
+		moves.draw(window);
+		if (player.iLivesLeft == 0)
 		{
 			window.clear(sf::Color::Black);
+			TextItem gameOver("Game Over", sf::Vector2f(250, 300), 50);
+			gameOver.draw(window);
 		}
+		else if(player.getBounds().intersects(background.bottom.getGlobalBounds())){
+			window.clear(sf::Color::Black);
+			TextItem gameWin("Congratulations", sf::Vector2f(230, 250), 50);
+			gameWin.draw(window);
+			gameScore.draw(window);
+		}
+		else{
+			score = calcScore(gameClock.getElapsedTime().asSeconds(), player.iMoves, player.iLivesLeft);
+			gameScore.update("Score: ", score);
+		}
+			
 		/*lane1.draw(window);
 		lane2.draw(window);
 		lane3.draw(window);
