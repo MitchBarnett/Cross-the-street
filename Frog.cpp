@@ -6,6 +6,8 @@ Frog::Frog()
 {
 	iX = 0;
 	iY = 0;
+	iMoves = 0;
+	iLivesLeft = 3;
 	frogBox.setSize(sf::Vector2f(50.0f, 50.0f));
 	frogBox.setFillColor(sf::Color::Green);
 }
@@ -110,32 +112,40 @@ bool Frog::onScreen(sf::Vector2u uWindow, int type)
 	 return true;  // in the screen
 }
 
-void Frog::checkMovement(sf::Event& event, sf::Clock& timer, sf::RenderWindow& window)
+void Frog::checkMovement(sf::Event& event, sf::RenderWindow& window)
 {
 	sf::Time cooldown = sf::seconds(0.25f);
-	if (event.type == sf::Event::KeyPressed &&  timer.getElapsedTime() > cooldown)
+	if (event.type == sf::Event::KeyPressed &&  movementCooldown.getElapsedTime() > cooldown)
 
 	{
 		if (event.key.code == sf::Keyboard::Left && onScreen(window.getSize(), 1))
 		{
 			moveLeft();
-			timer.restart();
+			movementCooldown.restart();
+			iMoves++;
 		}
 		if (event.key.code == sf::Keyboard::Right && onScreen(window.getSize(), 2))
 		{
 			moveRight();
-
-			timer.restart();
+			movementCooldown.restart();
+			iMoves++;
 		}
 		if (event.key.code == sf::Keyboard::Up && onScreen(window.getSize(), 3))
 		{
 			moveUp();
-			timer.restart();
+			movementCooldown.restart();
+			iMoves++;
 		}
 		if (event.key.code == sf::Keyboard::Down && onScreen(window.getSize(), 4))
 		{
 			moveDown();
-			timer.restart();
+			movementCooldown.restart();
+			iMoves++;
 		}
 	}
+}
+
+void Frog::update(sf::Event& event, sf::RenderWindow& window)
+{
+	checkMovement(event, window);
 }
