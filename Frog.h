@@ -23,6 +23,7 @@ public:
 	sf::RectangleShape frogBox;
 	void checkMovement(sf::Event& event, sf::RenderWindow& window);
 	void update(sf::Event& event, sf::RenderWindow& window);
+	sf::FloatRect getBounds();
 };
 
 #endif

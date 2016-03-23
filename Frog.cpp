@@ -149,3 +149,8 @@ void Frog::update(sf::Event& event, sf::RenderWindow& window)
 {
 	checkMovement(event, window);
 }
+
+sf::FloatRect Frog::getBounds()
+{
+	return frogBox.getGlobalBounds();
+}

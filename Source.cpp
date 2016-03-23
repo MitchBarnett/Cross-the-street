@@ -29,7 +29,7 @@ int main()
 	TrafficManager trafficManager;
 	Background background;
 	int livesLeft = 3;
-	TextItem lives("Lives: ", livesLeft, sf::Vector2f(0,650)); // Creates lives UI item
+	TextItem lives("Lives: ", player.iLivesLeft, sf::Vector2f(0,650)); // Creates lives UI item
 	TextItem moves("Moves: ", player.iMoves, sf::Vector2f(700, 650)); // Creates lives UI item
 	TextItem time("Time: ", 0.0f, sf::Vector2f(300, 650));
 
@@ -54,7 +54,7 @@ int main()
 		//Check if the user has requested the player to move
 		player.update(event, window);
 		trafficManager.update(elapsed);
-		lives.update("Lives: ", livesLeft);
+		lives.update("Lives: ", player.iLivesLeft);
 		moves.update("Moves: ", player.iMoves);
 		time.update("Time: ", gameClock.getElapsedTime().asSeconds());
 		/*lane1.update();
@@ -73,11 +73,10 @@ int main()
 		background.draw(window);
 		window.draw(player.frogBox);
 		trafficManager.draw(window);
-		if (trafficManager.checkCollision(player.frogBox.getGlobalBounds()))
+		if (trafficManager.checkCollision(player.getBounds()))
 		{
-			std::cout << "-1 life" << std::endl;
-			//livesLeft --;
-			//player.movePosition(350, 0);
+			player.iLivesLeft--;
+			player.movePosition(350, 0);
 		}
 		lives.draw(window);
 		moves.draw(window);
