@@ -15,7 +15,7 @@
 int main()
 {
 	// create the window
-	sf::RenderWindow window(sf::VideoMode(800, 650), "My window");
+	sf::RenderWindow window(sf::VideoMode(800, 680), "My window");
 	window.setFramerateLimit(60);
 
 	srand(time(NULL));
@@ -29,7 +29,10 @@ int main()
 	TrafficManager trafficManager;
 	Background background;
 	int livesLeft = 3;
-	TextItem lives("Lives: ", livesLeft, sf::Vector2f(0,0)); // Creates lives UI item
+	int movesTaken = 0;
+	TextItem lives("Lives: ", livesLeft, sf::Vector2f(0,650)); // Creates lives UI item
+	TextItem moves("Moves: ", movesTaken, sf::Vector2f(700, 650)); // Creates lives UI item
+	TextItem time("Time: ", 0.0f, sf::Vector2f(300, 650));
 
 	player.movePosition(350, 0);
 	sf::Clock movementCooldown;
@@ -50,10 +53,12 @@ int main()
 				window.close();
 		}
 		frameClock.restart();
-		//Chek if the user has requested the player to move
+		//Check if the user has requested the player to move
 		player.checkMovement(event, movementCooldown, window);
 		trafficManager.update(elapsed);
 		lives.update("Lives: ", livesLeft);
+		moves.update("Moves: ", movesTaken);
+		time.update("Time: ", gameClock.getElapsedTime().asSeconds());
 		/*lane1.update();
 		lane2.update();
 		lane3.update();
@@ -73,10 +78,12 @@ int main()
 		if (trafficManager.checkCollision(player.frogBox.getGlobalBounds()))
 		{
 			std::cout << "-1 life" << std::endl;
-			livesLeft --;
-			player.movePosition(350, 0);
+			//livesLeft --;
+			//player.movePosition(350, 0);
 		}
 		lives.draw(window);
+		moves.draw(window);
+		time.draw(window);
 		if (livesLeft == 0)
 		{
 			window.clear(sf::Color::Black);
@@ -91,7 +98,7 @@ int main()
 		// end the current frame
 		window.display();
 		elapsed = frameClock.getElapsedTime().asSeconds();
-		if (gameClock.getElapsedTime().asSeconds() < 0.5)
+		if (gameClock.getElapsedTime().asSeconds() < 0.1)
 		{
 			elapsed = elapsed * 60;
 		}
