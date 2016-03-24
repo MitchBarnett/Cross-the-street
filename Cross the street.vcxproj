@@ -74,7 +74,10 @@
     <ClCompile Include="Bus.cpp" />
     <ClCompile Include="Car.cpp" />
     <ClCompile Include="CarSpawner.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Frog.cpp" />
+    <ClCompile Include="Movable.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="TextItem.cpp" />
     <ClCompile Include="TrafficLane.cpp" />
@@ -86,7 +89,10 @@
     <ClInclude Include="Bus.h" />
     <ClInclude Include="Car.h" />
     <ClInclude Include="CarSpawner.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="Frog.h" />
+    <ClInclude Include="Movable.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="TextItem.h" />
     <ClInclude Include="TrafficLane.h" />
     <ClInclude Include="TrafficManager.h" />
