@@ -9,31 +9,53 @@ Frog::Frog()
 	iMoves = 0;
 	iLivesLeft = 3;
 	frogBox.setSize(sf::Vector2f(50.0f, 50.0f));
+	frogBox.setOrigin(frogBox.getSize().x /2, frogBox.getSize().y /2);
+	frogBox.setPosition(iX + frogBox.getSize().x *2, iY + frogBox.getSize().y *2 );
 	frogBox.setFillColor(sf::Color::Green);
+
+	if (!playerTexture.loadFromFile("frog.png"))
+	{
+		std::cout << "ERRROR" << std::endl;
+	}
+
+	frogBox.setTexture(&playerTexture);
 }
 
-void Frog::movePosition(int iNewX, int iNewY)
+void Frog::setPosition(int iNewX, int iNewY)
 {
-	iX = iNewX;
-	iY = iNewY;
+	iX = iNewX + frogBox.getOrigin().x;
+	iY = iNewY + frogBox.getOrigin().y;
+	frogBox.setPosition(iX, iY);
+}
+
+void Frog::movePosition(int iMoveX, int iMoveY)
+{
+	iX += iMoveX;
+	iY += iMoveY;
 	frogBox.setPosition(iX, iY);
 }
 
 void Frog::moveLeft()
 {
-	movePosition(iX - 50, iY);
+	movePosition(-50, 0);
+	frogBox.setRotation(90);
 }
 void Frog::moveRight()
 {
-	movePosition(iX + 50, iY);
+	movePosition(50, 0);
+	frogBox.setRotation(270);
+	
 }
 void Frog::moveUp()
 {
-	movePosition(iX , iY - 50);
+	movePosition(0, -50);
+	frogBox.setRotation(180);
+	
 }
 void Frog::moveDown()
 {
-	movePosition(iX , iY + 50);
+	movePosition(0,50);
+	frogBox.setRotation(0);
 }
 
 sf::Vector2i Frog::getposition(int type)

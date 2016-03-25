@@ -13,7 +13,8 @@ public:
 	int iMoves;
 	sf::Clock movementCooldown;
 	Frog(); //Constructor
-	void movePosition(int iNewX, int iNewY);
+	void setPosition(int iNewX, int iNewY);
+	void movePosition(int iMoveX, int iMoveY);
 	void moveLeft();
 	void moveRight();
 	void moveUp();
@@ -24,6 +25,7 @@ public:
 	void checkMovement(sf::Event& event, sf::RenderWindow& window);
 	void update(sf::Event& event, sf::RenderWindow& window);
 	sf::FloatRect getBounds();
+	sf::Texture playerTexture;
 };
 
 #endif
