@@ -11,11 +11,11 @@ Frog::Frog()
 	frogBox.setSize(sf::Vector2f(50.0f, 50.0f));
 	frogBox.setOrigin(frogBox.getSize().x /2, frogBox.getSize().y /2);
 	frogBox.setPosition(iX + frogBox.getSize().x *2, iY + frogBox.getSize().y *2 );
-	frogBox.setFillColor(sf::Color::Green);
+	
 
-	if (!playerTexture.loadFromFile("frog.png"))
+	if (!playerTexture.loadFromFile("images/frog.png"))
 	{
-		std::cout << "ERRROR" << std::endl;
+		frogBox.setFillColor(sf::Color::Green);
 	}
 
 	frogBox.setTexture(&playerTexture);
