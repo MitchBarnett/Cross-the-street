@@ -79,7 +79,7 @@ int main()
 		lives.draw(window);
 		time.draw(window);
 		moves.draw(window);
-		if (player.iLivesLeft == 0)
+		if (player.iLivesLeft <= 0)
 		{
 			window.clear(sf::Color::Black);
 			TextItem gameOver("Game Over", sf::Vector2f(250, 300), 50);
