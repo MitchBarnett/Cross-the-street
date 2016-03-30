@@ -2,6 +2,7 @@
 #include "Car.h"
 #include "Vehicle.h"
 #include <iostream>
+#include <vector>
 
 
 TrafficLane::TrafficLane()
@@ -17,18 +18,13 @@ TrafficLane::TrafficLane()
 	iLaneSpeed = getLaneSpeed(direction);
 }
 
-TrafficLane::TrafficLane(float xPos, float yPos, char direction, char type)
+TrafficLane::TrafficLane(float xPos, float yPos, char direction, char type, std::vector<sf::Texture*> textures)
 {
+	carTextures = textures;
 	laneHeight = yPos;
 	laneXStart = xPos;
 	direction = direction;
 	laneType = type;
-
-
-
-	sf::Clock clock;
-	std::cout << "hello world" << std::endl;
-
 	iLaneSpeed = getLaneSpeed(direction);
 }
 
@@ -45,16 +41,15 @@ void TrafficLane::update(float elapsed)
 		carsInLane[i].update(elapsed);
 	}
 
-	if (laneTime.getElapsedTime().asSeconds() < 0.6){
+	if (laneTime.getElapsedTime().asSeconds() < 0.2){
 		timeSinceSpawn = spawnTimer.getElapsedTime().asSeconds() * 60;
 	}else{
 		timeSinceSpawn = spawnTimer.getElapsedTime().asSeconds();
 	}
 	if (timeSinceSpawn > nextSpawn ){
-		carsInLane.push_back(Vehicle(iLaneSpeed, laneXStart, laneHeight, laneType));
+		carsInLane.push_back(Vehicle(iLaneSpeed, laneXStart, laneHeight, laneType, carTextures));
 		spawnTimer.restart();
 		nextSpawn = getNextSpawn();
-		std::cout << "spawned with type: " <<laneType<< std::endl;
 	}
 
 	if (carsInLane.size() > 15)

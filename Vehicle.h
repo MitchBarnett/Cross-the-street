@@ -12,7 +12,9 @@ public:
 	float fXSpeed;
 	float fLength;
 	sf::RectangleShape vehicleShape;
-	Vehicle(float speed, float xPos, float yPos, char type); //Constructor
+	sf::Texture *carTexture;
+	std::vector<sf::Texture*> carTextures;
+	Vehicle(float speed, float xPos, float yPos, char type, std::vector<sf::Texture*> textures); //Constructor
 	void setSpeed(float speed);
 	void update(float elapsed);
 	void draw(sf::RenderWindow& window);

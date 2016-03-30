@@ -22,6 +22,7 @@ public:
 	std::vector<Vehicle> carsInLane;
 	sf::Clock spawnTimer;
 	sf::Clock laneTime;
+	std::vector<sf::Texture*> carTextures;
 
 	void draw(sf::RenderWindow& window);
 	void update(float elapsed);
@@ -29,7 +30,7 @@ public:
 	float getNextSpawn();
 	int getLaneSpeed(char direction);
 	TrafficLane(); //Default Constructor
-	TrafficLane(float xPos, float yPos, char direction, char type); //Overloaded Constructor
+	TrafficLane(float xPos, float yPos, char direction, char type, std::vector<sf::Texture*> textures); //Overloaded Constructor
 
 	bool checkCollision(sf::FloatRect other);
 
