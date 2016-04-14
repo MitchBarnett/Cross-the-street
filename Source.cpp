@@ -6,6 +6,9 @@
 #include "TrafficLane.h"
 #include "TrafficManager.h"
 #include "TextItem.h"
+#include "Entity.h"
+#include "Movable.h"
+#include "Player.h"
 #include <string>
 #include <sstream>
 #include <iostream>
@@ -26,16 +29,17 @@ int main()
 
 	srand(time(NULL));
 	CarSpawner carManager;
-	Frog player;
+	Player player;
 
 	TrafficManager trafficManager;
 	Background background;
 	int livesLeft = 3;
 	TextItem lives("Lives: ", player.iLivesLeft, sf::Vector2f(0,650)); // Creates lives UI item
-	TextItem moves("Moves: ", player.iMoves, sf::Vector2f(700, 650)); // Creates lives UI item
+	TextItem moves("Moves: ", player.iMoves, sf::Vector2f(675, 650)); // Creates lives UI item
 	TextItem time("Time: ", 0.0f, sf::Vector2f(300, 650));
 	
-	player.setPosition(350, 0);
+	player.setPosition(sf::Vector2f(350, 0));
+
 	sf::Clock gameClock;
 	sf::Clock frameClock;
 	float elapsed = 0.01;
@@ -69,17 +73,17 @@ int main()
 
 		// draw everything here...
 		background.draw(window);
-		window.draw(player.frogBox);
+		player.draw(window);
 		trafficManager.draw(window);
 		if (trafficManager.checkCollision(player.getBounds()))
 		{
 			player.iLivesLeft--;
-			player.setPosition(350, 0);
+			player.setPosition(sf::Vector2f(350, 0));
 		}
 		lives.draw(window);
 		time.draw(window);
 		moves.draw(window);
-		if (player.iLivesLeft == 0)
+		if (player.iLivesLeft <= 0)
 		{
 			window.clear(sf::Color::Black);
 			TextItem gameOver("Game Over", sf::Vector2f(250, 300), 50);
