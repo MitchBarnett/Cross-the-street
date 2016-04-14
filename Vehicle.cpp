@@ -6,8 +6,9 @@
 
 
 
-Vehicle::Vehicle(float speed, float xPos, float yPos, char type)
+Vehicle::Vehicle(float speed, float xPos, float yPos, char type, std::vector<sf::Texture*> textures)
 {
+	carTextures = textures;
 	fX = xPos;
 	fY = yPos;
 	fXSpeed = speed;
@@ -17,13 +18,11 @@ Vehicle::Vehicle(float speed, float xPos, float yPos, char type)
 		fLength = 100.0f;
 		vehicleShape.setPosition(sf::Vector2f(fX, fY));
 		vehicleShape.setSize(sf::Vector2f(fLength, 46.0f));
-		vehicleShape.setFillColor(sf::Color::Red);
 		break; //optional
 	case 's':
 		fLength = 150.0f;
 		vehicleShape.setPosition(sf::Vector2f(fX, fY));
 		vehicleShape.setSize(sf::Vector2f(fLength, 46.0f));
-		vehicleShape.setFillColor(sf::Color::Blue);
 		break; //optional
 
 		// you can have any number of case statements.
@@ -32,10 +31,15 @@ Vehicle::Vehicle(float speed, float xPos, float yPos, char type)
 		fLength = 100.0f;
 		vehicleShape.setPosition(sf::Vector2f(fX, fY));
 		vehicleShape.setSize(sf::Vector2f(fLength, 46.0f));
-		vehicleShape.setFillColor(sf::Color::Red);
 		break; //optional
 	}
+	int randomIndex = rand() % carTextures.size();
+	vehicleShape.setTexture(carTextures[randomIndex]);
 
+	if (speed < 0)
+	{
+		vehicleShape.scale(-1, 1);
+	}
 }
 
 void Vehicle::setSpeed(float speed)

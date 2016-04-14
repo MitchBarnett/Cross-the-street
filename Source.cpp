@@ -38,7 +38,8 @@ int main()
 	TextItem moves("Moves: ", player.iMoves, sf::Vector2f(675, 650)); // Creates lives UI item
 	TextItem time("Time: ", 0.0f, sf::Vector2f(300, 650));
 	
-	player.setPosition(sf::Vector2f(350, 0));
+	player.setPosition(sf::Vector2f(375, 25));
+
 	sf::Clock gameClock;
 	sf::Clock frameClock;
 	float elapsed = 0.01;
@@ -77,7 +78,7 @@ int main()
 		if (trafficManager.checkCollision(player.getBounds()))
 		{
 			player.iLivesLeft--;
-			player.setPosition(sf::Vector2f(350, 0));
+			player.setPosition(sf::Vector2f(375, 25));
 		}
 		lives.draw(window);
 		time.draw(window);
