@@ -18,6 +18,7 @@ public:
 	void checkMovement(sf::Event& event, sf::RenderWindow& window);
 	void update(sf::Event& event, sf::RenderWindow& window);
 	void loseLife();
+	sf::Texture playerTexture;
 };
 
 #endif
