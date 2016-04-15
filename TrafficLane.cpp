@@ -41,7 +41,7 @@ void TrafficLane::update(float elapsed)
 		carsInLane[i].update(elapsed);
 	}
 
-	if (laneTime.getElapsedTime().asSeconds() < 0.2){
+	if (laneTime.getElapsedTime().asSeconds() < 0.19){
 		timeSinceSpawn = spawnTimer.getElapsedTime().asSeconds() * 60;
 	}else{
 		timeSinceSpawn = spawnTimer.getElapsedTime().asSeconds();
@@ -71,12 +71,12 @@ float TrafficLane::getNextSpawn()
 	float fMinTime; 	// Time for a car to pass the spawn area
 	float fMaxTime;		// Time for a 5 cars to pass the spawn area
 	if (laneType == 's'){
-		fMinTime = 150.0f / iTempLaneSpeed;		// Time for a car to pass the spawn area
+		fMinTime = 150.0f / iTempLaneSpeed;		// Time for a truck to pass the spawn area
 		fMaxTime = 150.0f / iTempLaneSpeed * 3;
 	}
 	else{
 		fMinTime = 100.0f / iTempLaneSpeed;		// Time for a car to pass the spawn area
-		fMaxTime = 100.0f / iTempLaneSpeed * 6;
+		fMaxTime = 100.0f / iTempLaneSpeed * 5;
 	}
 	return (fMinTime + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (fMaxTime - fMinTime)))); //Return a float between the min and max times
 }
