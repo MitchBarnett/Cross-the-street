@@ -4,43 +4,35 @@
 class TrafficManager
 {
 public:
+	// Constructor
+	TrafficManager();
 
-	TrafficManager(); //Constructor
+	// Destructor
+	~TrafficManager();
+
+	// Loads the .png of vehicles into 3 arrays of sf::Texture objects depending on their speed
 	void loadTextures();
+
+	void unloadTextures();
+
+	// updates all traffic objects position
 	void update(float elapsed);
+
+	// Draws all traffic objects to the passed window
 	void draw(sf::RenderWindow& window);
+
+	// Returns true if any traffic object collides with the passed FloatRect
 	bool checkCollision(sf::FloatRect other);
+
 private:
-	std::vector<sf::Texture*> fastVehicleTextures;
-	std::vector<sf::Texture*> mediumVehicleTextures;
-	std::vector<sf::Texture*> slowVehicleTextures;
+	// A vector containing pointers to the textures
+	std::vector<sf::Texture*> aptexFastVehicleTextures;
+	std::vector<sf::Texture*> aptexMediumVehicleTextures;
+	std::vector<sf::Texture*> aptexSlowVehicleTextures;
+
+	// A vector to hold the traffic lanes
 	std::vector<TrafficLane> lanes;
 
-
-	sf::Texture fastTexture1;
-	sf::Texture fastTexture2;
-	sf::Texture fastTexture3;
-	sf::Texture fastTexture4;
-	sf::Texture fastTexture5;
-	sf::Texture fastTexture6;
-	sf::Texture fastTexture7;
-	sf::Texture fastTexture8;
-	sf::Texture fastTexture9;
-	sf::Texture fastTexture10;
-
-	sf::Texture mediumTexture1;
-	sf::Texture mediumTexture2;
-	sf::Texture mediumTexture3;
-	sf::Texture mediumTexture4;
-	sf::Texture mediumTexture5;
-	sf::Texture mediumTexture6;
-	sf::Texture mediumTexture7;
-	sf::Texture mediumTexture8;
-	sf::Texture mediumTexture9;
-
-	sf::Texture slowTexture1;
-	sf::Texture slowTexture2;
-	sf::Texture slowTexture3;
 };
 
 #endif
