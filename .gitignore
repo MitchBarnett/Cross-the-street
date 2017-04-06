@@ -1,1 +1,6 @@
-Debug/*
+*.obj
+*.tlog
+*.pdb
+*.log
+.vs/
+
