@@ -39,13 +39,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <ExecutablePath>../../SFML-2.2/bin;$(ExecutablePath)</ExecutablePath>
-    <IncludePath>./include;../../SFML-2.2/include;$(IncludePath)</IncludePath>
-    <LibraryPath>../../SFML-2.2/lib;$(LibraryPath)</LibraryPath>
+    <ExecutablePath>./bin;$(ExecutablePath)</ExecutablePath>
+    <IncludePath>./include;$(IncludePath)</IncludePath>
+    <LibraryPath>./lib;$(LibraryPath)</LibraryPath>
     <SourcePath>./src;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <ExecutablePath>../../SFML-2.2/bin;$(ExecutablePath)</ExecutablePath>
+    <ExecutablePath>./bin;$(ExecutablePath)</ExecutablePath>
     <IncludePath>./include;$(IncludePath)</IncludePath>
     <LibraryPath>./lib;$(LibraryPath)</LibraryPath>
     <SourcePath>./src;$(SourcePath)</SourcePath>

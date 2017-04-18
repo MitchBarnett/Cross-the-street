@@ -32,11 +32,12 @@ int main()
 
 	int score = 0;		// Tracks the players score
 	float elapsed = 0.01f;	// Stores the value of the frame time
+	bool cheatMode = false;
 
 	TextItem textLives("Lives: ", player.getLivesLeft(), sf::Vector2f(0,650));	// Creates Lives UI item
 	TextItem textMoves("Moves: ", player.getMovesTaken(), sf::Vector2f(675, 650));	// Creates Moves UI item
-	TextItem textTime("Time: ", 0.0f, sf::Vector2f(300, 650));				// Creates Time UI item
-	
+	TextItem textTime("Time: ", 0.0f, sf::Vector2f(300, 650));				// Creates Time UI item			
+	TextItem textCheatMode("Cheatmode on", sf::Vector2f(0, 0), 50); // show text saying cheatmode is on
 
 	sf::Clock gameClock;	// A clock to track how long the game has been running
 	sf::Clock frameClock;	// Tracks how much time the last frame took
@@ -61,6 +62,12 @@ int main()
 				player.reset();
 				gameClock.restart();
 			}
+
+			// toggle cheat mode if the c key is pressed
+			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::C)
+			{
+				cheatMode = !cheatMode;
+			}
 		}
 
 		
@@ -70,7 +77,7 @@ int main()
 		trafficManager.update(elapsed, gameTime);	// Updates traffic all trafic objects
 
 		// Checks for a collision between the player and traffic objects
-		if (trafficManager.checkCollision(player.getBounds()) && false)
+		if (trafficManager.checkCollision(player.getBounds()) && !cheatMode)
 		{
 			player.loseLife();	// Decrement the lives
 			player.setPosition(sf::Vector2f(375, 625));
@@ -94,6 +101,10 @@ int main()
 		textLives.draw(window);
 		textTime.draw(window);
 		textMoves.draw(window);
+		if (cheatMode)
+		{
+			textCheatMode.draw(window);
+		}
 		
 		// Draw a the game over screen if game is lost
 		if (player.getLivesLeft() <= 0)

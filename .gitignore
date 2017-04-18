@@ -3,4 +3,7 @@
 *.pdb
 *.log
 .vs/
-
+*.opensdf
+*.sdf
+*.ilk
+*.idb
